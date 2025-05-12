@@ -111,10 +111,16 @@ for feature in feature_sets[feature_choice]:
     elif feature == "Quality of Sleep":
         inputs[feature] = st.number_input(label, min_value=0, max_value=10, step=1)
         
+   elif feature == "Physical Activity Level":
+        inputs[feature] = st.number_input(label, min_value=0, max_value=10, step=1)
+    
+    elif feature == "Stress Level":
+        inputs[feature] = st.number_input(label, min_value=0, max_value=10, step=1)
+        
     else:
         # Geri kalan tüm sayısal alanlara negatif sınırı koy
-        if feature in ['Age', 'Physical Activity Level', 'Heart Rate',
-                       'Daily Steps', 'Stress Level', 'Systolic', 'Diastolic']:
+        if feature in ['Age', 'Heart Rate',
+                       'Daily Steps', 'Systolic', 'Diastolic']:
             inputs[feature] = st.number_input(label, min_value=0, step=1)
         else:
             inputs[feature] = st.number_input(label, min_value=0.0, step=0.25)
