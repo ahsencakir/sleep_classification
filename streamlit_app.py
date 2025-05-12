@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# 🔹 Model dosya yolları
+# Model dosya yolları
 model_paths = {
     'Logistic Regression': {
         'SelectKBest': 'models/model_LogisticRegression_SelectKBest.pkl',
@@ -27,7 +27,7 @@ model_paths = {
 }
 
 
-# 🔸 Özellik setleri
+# Özellik setleri
 feature_sets = {
     'SelectKBest': ['Age', 'Sleep Duration', 'Quality of Sleep', 'Physical Activity Level',
                     'Heart Rate', 'Gender', 'Systolic', 'Diastolic', 'BMI Category', 'Occupation'],
@@ -38,7 +38,7 @@ feature_sets = {
                            'Heart Rate', 'Stress Level']
 }
 
-# 🔸 TR-EN etiket eşleşmeleri
+# TR-EN etiket eşleşmeleri
 label_map = {
     'Age': "Yaş (Age)",
     'Sleep Duration': "Uyku Süresi (Sleep Duration)",
@@ -54,7 +54,7 @@ label_map = {
     'Occupation': "Meslek (Occupation)"
 }
 
-# 🔸 Encoding sözlükleri
+# Encoding sözlükleri
 occupation_options = {
     'Hemşire (Nurse)': 'Nurse',
     'Doktor (Doctor)': 'Doctor',
@@ -81,15 +81,15 @@ occupation_encoding = {
     'Manager': 0.0026738
 }
 
-bmi_encoding = {'Normal': 0, 'Overweight': 1, 'Obese': 2}
+bmi_encoding = {'Normal': 0, 'Aşırı Kilolu (Overweight)': 1, 'Obez (Obese)': 2}
 gender_encoding = {'Erkek (Male)': 1, 'Kadın (Female)': 0}
 
-# 🎯 Streamlit Arayüzü
+# Streamlit Arayüzü
 st.title("🛌 Uyku Bozukluğu Tahmini Uygulaması")
 model_choice = st.selectbox("🔍 Model Seçin (en iyi model Logistic Regression)", list(model_paths.keys()))
 feature_choice = st.selectbox("🧩 Özellik Seti Seçin (en iyi özellik seti SelectKBest)", list(feature_sets.keys()))
 
-# 🔢 Form Girişi
+# Form Girişi
 st.subheader("📝 Girdi Verileri")
 inputs = {}
 
@@ -119,7 +119,7 @@ for feature in feature_sets[feature_choice]:
         else:
             inputs[feature] = st.number_input(label, min_value=0.0, step=0.25)
 
-# 🔍 Tahmin Butonu
+#  Tahmin Butonu
 if st.button("📊 Tahmin Et"):
     model_data = joblib.load(model_paths[model_choice][feature_choice])
     model = model_data['model']
