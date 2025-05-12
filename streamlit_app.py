@@ -111,7 +111,7 @@ for feature in feature_sets[feature_choice]:
     elif feature == "Quality of Sleep":
         inputs[feature] = st.number_input(label, min_value=0, max_value=10, step=1)
         
-   elif feature == "Physical Activity Level":
+    elif feature == "Physical Activity Level":
         inputs[feature] = st.number_input(label, min_value=0, max_value=10, step=1)
     
     elif feature == "Stress Level":
